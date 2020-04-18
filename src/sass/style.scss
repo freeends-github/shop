@@ -1027,3 +1027,16 @@ footer{
         }
     }
 }
+.input-group{
+    display: none;
+}
+.table{
+    position: relative;
+    .delete-item{
+        position: absolute;
+        top: 12px;
+        right: 5%;
+        font-size: 0.7em;
+        padding: 0.275em 0.5em;
+    }
+}

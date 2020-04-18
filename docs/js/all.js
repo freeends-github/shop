@@ -115,25 +115,29 @@ var shoppingCart = (function() {
   
   // Add to cart
   obj.addItemToCart = function(name, price, count) {
+    var value = parseInt(document.getElementById('number').value, 10);
     for(var item in cart) {
       if(cart[item].name === name) {
-        cart[item].count ++;
+        // cart[item].count ++;
+        cart[item].count=value;
         saveCart();
         return;
       }
     }
-    var item = new Item(name, price, count);
+    //var item = new Item(name, price, count);
+    var item = new Item(name, price, value);
     cart.push(item);
     saveCart();
   }
   // Set count from item
   obj.setCountForItem = function(name, count) {
-    // for(var i in cart) {
-    //   if (cart[i].name === name) {
-    //     cart[i].count = count;
-    //     break;
-    //   }
-    // }
+    var value = parseInt(document.getElementById('number').value, 10);
+    for(var i in cart) {
+      if (cart[i].name === name) {
+        cart[i].count = count;
+        break;
+      }
+    }
   };
   // Remove item from cart
   obj.removeItemFromCart = function(name) {
@@ -168,25 +172,30 @@ var shoppingCart = (function() {
 
   // Count cart 
   obj.totalCount = function() {
-    // var totalCount = 0;
+    var totalCount = 0;
     // for(var item in cart) {
     //   totalCount += cart[item].count;
     // }
-    var totalCount = parseInt(document.getElementById('number').value, 10);
+    for(var item in cart) {
+        totalCount=parseInt(document.getElementById('number').value, 10);
+      }
+    //var totalCount = parseInt(document.getElementById('number').value, 10);
     return totalCount;
   }
 
   // Total cart
   obj.totalCart = function() {
+    var value = parseInt(document.getElementById('number').value, 10);
     var totalCart = 0;
     for(var item in cart) {
-      totalCart += cart[item].price * cart[item].count;
+      totalCart += cart[item].price * value;
     }
     return Number(totalCart.toFixed(2));
   }
 
   // List cart
   obj.listCart = function() {
+    var value = parseInt(document.getElementById('number').value, 10);
     var cartCopy = [];
     for(i in cart) {
       item = cart[i];
@@ -195,7 +204,7 @@ var shoppingCart = (function() {
         itemCopy[p] = item[p];
 
       }
-      itemCopy.total = Number(item.price * item.count).toFixed(2);
+      itemCopy.total = Number(item.price * value).toFixed(2);
       cartCopy.push(itemCopy)
     }
     return cartCopy;
@@ -238,10 +247,12 @@ $('.clear-cart').click(function() {
 function displayCart() {
   var cartArray = shoppingCart.listCart();
   var output = "";
+  var value = parseInt(document.getElementById('number').value, 10);
   for(var i in cartArray) {
     output += "<tr>"
       + "<td>" + cartArray[i].name + "</td>" 
       + "<td>(" +"$"+ cartArray[i].price + ")</td>"
+      + "<td>(" +"Quantity:  " +value+ ")</td>"
       + "<td><div class='input-group'><button class='minus-item input-group-addon btn btn-primary' data-name=" + cartArray[i].name + ">-</button>"
       + "<input type='number' class='item-count form-control' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>"
       + "<button class='plus-item btn btn-primary input-group-addon' data-name=" + cartArray[i].name + ">+</button></div></td>"
@@ -280,8 +291,9 @@ $('.show-cart').on("click", ".plus-item", function(event) {
 // Item count input
 $('.show-cart').on("change", ".item-count", function(event) {
    var name = $(this).data('name');
-   var count = Number($(this).val());
-  shoppingCart.setCountForItem(name, count);
+   var value = parseInt(document.getElementById('number').value, 10);
+  // var count = Number($(this).val());
+  shoppingCart.setCountForItem(name, value);
   displayCart();
 });
 
