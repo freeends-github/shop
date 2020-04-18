@@ -6,8 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"
         />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous"> -->
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+        integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
         crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
         />
@@ -17,6 +23,31 @@
     </head>
     
     <body>
+        <!-- Modal -->
+        <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                         <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span>
+
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="show-cart table"></table>
+                        <div>Total price: $<span class="total-cart"></span>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Order now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <header>
             <div class="preheader">
                 <p>Preview text discount sale 50%</p>
@@ -26,7 +57,9 @@
                     <img src="../img/account rounded.png" alt="">
                 </div>
                 <div>
-                    <img src="../img/cart button.png" alt="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cart">
+                        <img src="../img/cart button.png" alt="">(<span class="total-count"></span>)</button>
+                    <button class="clear-cart btn btn-danger">Clear Cart</button>
                 </div>
             </div>
             <div class="nenheader2">
@@ -59,43 +92,59 @@
     text preview</h3>
 
                 </div>
-                <div class="gallery">
-                    <div class="foto">
-                        <div class="icon">
-                            <p>PRODUCT NAME</p> <a href="about.html"> <img src="./img/Group 9.png" alt=""> </a>
+                <div class="gallery"> <a href="about.html" class="foto">
+        
+          <div class="icon">
+            <p>PRODUCT NAME</p>
+            <img src="./img/Group 9.png" alt="">
+          </div>
+       
+    </a>
+ <a href="about.html" class="foto foto2">
+        
+      <div class="icon">
+        <p>PRODUCT NAME</p>
+        <img src="./img/Group 9.png" alt="">
+      </div>
+   
+</a>
 
-                        </div>
-                    </div>
-                    <div class="foto foto2">
-                        <div class="icon">
-                            <p>PRODUCT NAME</p> <a href="about.html"> <img src="./img/Group 9.png" alt=""> </a>
+<a href="about.html" class="foto foto3">
+        
+  <div class="icon">
+    <p>PRODUCT NAME</p>
+    <img src="./img/Group 9.png" alt="">
+  </div>
 
-                        </div>
-                    </div>
-                    <div class="foto foto3">
-                        <div class="icon">
-                            <p>PRODUCT NAME</p> <a href="about.html"> <img src="./img/Group 9.png" alt=""> </a>
+</a>
 
-                        </div>
-                    </div>
-                    <div class="foto foto4">
-                        <div class="icon">
-                            <p>PRODUCT NAME</p> <a href="about.html"> <img src="./img/Group 9.png" alt=""> </a>
+<a href="about.html" class="foto foto4">
+        
+  <div class="icon">
+    <p>PRODUCT NAME</p>
+    <img src="./img/Group 9.png" alt="">
+  </div>
 
-                        </div>
-                    </div>
-                    <div class="foto foto5">
-                        <div class="icon">
-                            <p>PRODUCT NAME</p> <a href="about.html"> <img src="./img/Group 9.png" alt=""> </a>
+</a>
 
-                        </div>
-                    </div>
-                    <div class="foto foto6">
-                        <div class="icon">
-                            <p>PRODUCT NAME</p> <a href="about.html"> <img src="./img/Group 9.png" alt=""> </a>
+<a href="about.html" class="foto foto5">
+        
+  <div class="icon">
+    <p>PRODUCT NAME</p>
+    <img src="./img/Group 9.png" alt="">
+  </div>
 
-                        </div>
-                    </div>
+</a>
+
+<a href="about.html" class="foto foto6">
+        
+  <div class="icon">
+    <p>PRODUCT NAME</p>
+    <img src="./img/Group 9.png" alt="">
+  </div>
+
+</a>
+
                 </div>
                 <div class="good">
                     <div class="day">
@@ -159,6 +208,16 @@
             </div>
         </footer>
         <script src="js/all.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -177,11 +236,32 @@
              
                 
             });
-        //     $(window).resize(function() {
-        //     var current = $('.slider').slickCurrentSlide();
-        //     $('.slider').slickGoTo(current);
-        // });
         </script>
+        <!-- <script type="text/javascript">
+    $('.slider-for').slick({
+  dots: false,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  fade: true,
+  asNavFor: '.slider-nav'
+});
+$('.slider-nav').slick({
+    dots: false,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  asNavFor: '.slider-for',
+  dots: true,
+  centerMode: true,
+  focusOnSelect: true,
+  prevArrow : $(".left_arrow"),
+  nextArrow : $(".right_arrow")
+});
+	
+
+ 
+    
+ </script> -->
     </body>
 
 </html>

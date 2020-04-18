@@ -6,8 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"
         />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous"> -->
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+        integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
         crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
         />
@@ -17,6 +23,31 @@
     </head>
     
     <body>
+        <!-- Modal -->
+        <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                         <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span>
+
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="show-cart table"></table>
+                        <div>Total price: $<span class="total-cart"></span>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Order now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <header>
             <div class="preheader">
                 <p>Preview text discount sale 50%</p>
@@ -26,7 +57,9 @@
                     <img src="../img/account rounded.png" alt="">
                 </div>
                 <div>
-                    <img src="../img/cart button.png" alt="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cart">
+                        <img src="../img/cart button.png" alt="">(<span class="total-count"></span>)</button>
+                    <button class="clear-cart btn btn-danger">Clear Cart</button>
                 </div>
             </div>
             <div class="nenheader2">
@@ -60,24 +93,30 @@
                 </div>
                 <div class="columns">
                     <div class="gallery1">
-                        <div class="foto-ylli">
-                            <img src="./img/Rectangle1.4.png" alt="">
+                        <div class="foto-ylli slider-for">
+                            <img id="img" class="big" src="./img/Rectangle1.4.png" alt="">
+                            <!-- <img src="./img/Rectangle1.1@2x.png" alt="">
+                <img src="./img/Rectangle1.2@2x.png" alt="">
+                <img src="./img/Rectangle1.3@2x.png" alt="">
+                <img src="./img/Rectangle1.2@2x.png" alt=""> -->
                         </div>
                         <!-- slideri -->
                         <div class="slider-container0">
-                            <div class="slider">
+                            <div class="slider slider-nav">
                                 <!-- <div class="slide foto1.1">
                       <img src="./img/Rectangle1.1.png" alt="">
+                      
                     </div>
                     <div class="slide foto1.2">
                       <img src="./img/Rectangle1.2.png" alt="">
                     </div>
                     <div class="slide foto1.3"><img src="./img/Rectangle1.3.png" alt=""></div>
                     <div class="slide foto1.4"><img src="./img/Rectangle1.2.png" alt=""></div> -->
-                                <img src="./img/Rectangle1.1.png" alt="">
-                                <img src="./img/Rectangle1.2.png" alt="">
-                                <img src="./img/Rectangle1.3.png" alt="">
-                                <img src="./img/Rectangle1.2.png" alt="">
+                                <!-- <img src="./img/Rectangle1.4.png" alt=""> -->
+                                <img class="small" src="./img/Rectangle1.1.png" id="1" alt="">
+                                <img class="small" src="./img/Rectangle1.2.png" id="2" alt="">
+                                <img class="small" src="./img/Rectangle1.3.png" id="3" alt="">
+                                <img class="small" src="./img/Rectangle1.2.png" id="4" alt="">
                             </div>
                             <div class="slider_arrows"> <span class="left_arrow"></span>
  <span class="right_arrow"><span>
@@ -132,8 +171,10 @@
                 <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
               </form>
             </div>
-
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <!-- <h4 class="card-title">Lemon</h4>
+            <p class="card-text">Price: $5</p> -->
+            <a href="#" data-name="ProductName" data-price="10" class="add-to-cart btn btn-primary">Add to cart</a>
+            <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
             <div class="ikona">
               <span id = heart><i class="fa fa-heart-o fa-lg" aria-hidden="true" ></i> </span>
 
@@ -355,6 +396,16 @@
                 </div>
             </footer>
             <script src="js/all.js"></script>
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+            <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+            integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+            crossorigin="anonymous"></script>
             <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -373,11 +424,32 @@
                  
                     
                 });
-            //     $(window).resize(function() {
-            //     var current = $('.slider').slickCurrentSlide();
-            //     $('.slider').slickGoTo(current);
-            // });
             </script>
+            <!-- <script type="text/javascript">
+    $('.slider-for').slick({
+  dots: false,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  fade: true,
+  asNavFor: '.slider-nav'
+});
+$('.slider-nav').slick({
+    dots: false,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  asNavFor: '.slider-for',
+  dots: true,
+  centerMode: true,
+  focusOnSelect: true,
+  prevArrow : $(".left_arrow"),
+  nextArrow : $(".right_arrow")
+});
+	
+
+ 
+    
+ </script> -->
     </body>
 
 </html>
