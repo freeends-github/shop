@@ -3,9 +3,19 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.show-cart{
+    tr{
+        display: flex;
+        align-items: center !important;
+        border-top: 1px solid #eceeef;
+        td{
+            border: none;
+        }
+    }
+}
 body{
     font-family: Poppins;
+    padding-right: 0 !important;
         .modal{
             button:hover{
                 cursor: pointer;
@@ -27,7 +37,28 @@ body{
                 display: flex;
                 justify-content: space-between;
                 margin: 38px 62px;
+                button{
+                   padding: 0 !important;
+                    background-color: transparent;
+                    border: none;
+                    position: relative;
+                    .total-count{
+                        position: absolute;
+                        top: -5px;
+                        right: 0;
+                        background-color: #3A444C;
+                        color: white;
+                        font-size: 10px;
+                        padding: 2px 5px;
+                        border-radius: 50%;
+                    }
+                }
+                button:active,button:focus{
+                    border: none !important;
+                }
                 button:hover{
+                    background-color: transparent;
+                    //border: ;
                     cursor: pointer;
                 }
             }
@@ -372,8 +403,8 @@ body{
                     }
                     //width: 100;
                     .foto-ylli{
-                        width: 643px;
-                        height: 632px;
+                       // width: 643px;
+                       // height: 632px;
                         // grid-column-start: 1;
                         // grid-column-end: 3;
                         //min-height: 500px;
@@ -980,5 +1011,19 @@ footer{
             }
         }
 
+    }
+
+}
+@media screen and (max-width: 530px){
+    .show-cart{
+        tr{
+            display: flex;
+            flex-direction: column;
+            align-items: center !important;
+            border-top: 1px solid #eceeef;
+            td{
+                border: none;
+            }
+        }
     }
 }

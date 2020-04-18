@@ -119,12 +119,12 @@ var shoppingCart = (function() {
   }
   // Set count from item
   obj.setCountForItem = function(name, count) {
-    for(var i in cart) {
-      if (cart[i].name === name) {
-        cart[i].count = count;
-        break;
-      }
-    }
+    // for(var i in cart) {
+    //   if (cart[i].name === name) {
+    //     cart[i].count = count;
+    //     break;
+    //   }
+    // }
   };
   // Remove item from cart
   obj.removeItemFromCart = function(name) {
@@ -159,10 +159,11 @@ var shoppingCart = (function() {
 
   // Count cart 
   obj.totalCount = function() {
-    var totalCount = 0;
-    for(var item in cart) {
-      totalCount += cart[item].count;
-    }
+    // var totalCount = 0;
+    // for(var item in cart) {
+    //   totalCount += cart[item].count;
+    // }
+    var totalCount = parseInt(document.getElementById('number').value, 10);
     return totalCount;
   }
 
@@ -231,13 +232,13 @@ function displayCart() {
   for(var i in cartArray) {
     output += "<tr>"
       + "<td>" + cartArray[i].name + "</td>" 
-      + "<td>(" + cartArray[i].price + ")</td>"
+      + "<td>(" +"$"+ cartArray[i].price + ")</td>"
       + "<td><div class='input-group'><button class='minus-item input-group-addon btn btn-primary' data-name=" + cartArray[i].name + ">-</button>"
       + "<input type='number' class='item-count form-control' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>"
       + "<button class='plus-item btn btn-primary input-group-addon' data-name=" + cartArray[i].name + ">+</button></div></td>"
       + "<td><button class='delete-item btn btn-danger' data-name=" + cartArray[i].name + ">X</button></td>"
       + " = " 
-      + "<td>" + cartArray[i].total + "</td>" 
+      + "<td>" +"$"+ cartArray[i].total + "</td>" 
       +  "</tr>";
   }
   $('.show-cart').html(output);
@@ -270,10 +271,7 @@ $('.show-cart').on("click", ".plus-item", function(event) {
 // Item count input
 $('.show-cart').on("change", ".item-count", function(event) {
    var name = $(this).data('name');
-  //  var value = $('.number');
- // var value = parseInt(document.getElementById('number').value, 10);
    var count = Number($(this).val());
-  // var count= parseInt(document.getElementById('number').value, 10);
   shoppingCart.setCountForItem(name, count);
   displayCart();
 });
